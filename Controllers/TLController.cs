@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using DFTelegram.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DFTelegram.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]")]
     public class TLController : ControllerBase

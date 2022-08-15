@@ -3,12 +3,13 @@ using DFTelegram.BackgroupTaskService.QueueService;
 using DFTelegram.Helper;
 using DFTelegram.Models;
 using DFTelegram.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TL;
 
 namespace DFTelegram.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]")]
     public class DownloadsInfoController : ControllerBase
@@ -60,7 +61,7 @@ namespace DFTelegram.Controllers
                 sb.Append(AppsettingsHelper.app(new string[] { "RunConfig", "ReturnDownloadUrlPrefix" }));
                 if (info.SavePath.Contains("Photo"))
                 {
-                    sb.Append("Photo/");                    
+                    sb.Append("Photo/");
                 }
                 else
                 {

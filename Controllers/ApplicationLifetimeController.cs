@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 
 namespace DFTelegram.Controllers
 {
 
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]")]
     public class ApplicationLifetimeController : ControllerBase

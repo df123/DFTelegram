@@ -1,11 +1,13 @@
 using DFTelegram.BackgroupTaskService.QueueService;
 using DFTelegram.Models;
 using DFTelegram.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TL;
 
 namespace DFTelegram.QueueBase.Controllers
 {
+    [Authorize]
     public class QueueBaseController<T> : ControllerBase
     {
         private readonly IQueueBase<T> _queueBase;
@@ -13,7 +15,7 @@ namespace DFTelegram.QueueBase.Controllers
         {
             this._queueBase = queueBase;
         }
-        
+
         [HttpGet]
         public IActionResult GetCount()
         {

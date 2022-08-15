@@ -1,12 +1,13 @@
 using DFTelegram.BackgroupTaskService.QueueService;
 using DFTelegram.Models;
 using DFTelegram.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TL;
 
 namespace DFTelegram.QueueBase.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]")]
     public class PhotoController : QueueBaseController<Photo>
