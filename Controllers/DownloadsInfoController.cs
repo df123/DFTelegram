@@ -2,6 +2,7 @@ using System.Text;
 using DFTelegram.BackgroupTaskService.QueueService;
 using DFTelegram.Helper;
 using DFTelegram.Models;
+using DFTelegram.Models.DTO.Input;
 using DFTelegram.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,9 +40,12 @@ namespace DFTelegram.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetByConditional(string conditionals)
+        public async Task<IActionResult> GetByConditional(QueryConditionalsDTO dto)
         {
-            DownloadsInfo[] result = await _downloadsInfoService.GetByConditional(conditionals);
+            if(dto == null || dto.conditionals == null){
+                return BadRequest();
+            }
+            DownloadsInfo[] result = await _downloadsInfoService.GetByConditional(dto.conditionals);
             return Ok(result);
         }
 
