@@ -33,14 +33,14 @@ public class ListenTelegramService : BackgroundService
     {
         _logger.LogInformation("开始Telegram消息监听");
         TL.User user = await _client.LoginUserIfNeeded();
-        _client.Update += ClientUpdate;
+        _client.OnUpdate += ClientUpdate;
         Task downloadMediaTask = DownloadMedia(stoppingToken);
         Task downloadPhotoTask = DownloadPhoto(stoppingToken);
         await downloadPhotoTask;
         await downloadMediaTask;
     }
 
-    async void ClientUpdate(IObject arg)
+    async Task ClientUpdate(IObject arg)
     {
         if (arg is not Updates { updates: var updates } upd) return;
         foreach (var update in updates)

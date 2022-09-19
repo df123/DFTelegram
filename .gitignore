@@ -5,6 +5,7 @@
 
 #my-specific files
 publish.sh
+publish-arm.sh
 downloads.*
 internal-nlog-AspNetCore6.txt
 downloads.txt

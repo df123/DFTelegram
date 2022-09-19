@@ -73,6 +73,8 @@ try
             };
 #pragma warning restore CS1998
         }
+        client.PingInterval = 300;
+        client.MaxAutoReconnects = 100;
         return client;
     });
 
@@ -105,7 +107,7 @@ try
                 };
             });
 
-    // builder.Services.AddHostedService<ListenTelegramService>();
+    builder.Services.AddHostedService<ListenTelegramService>();
 
     var app = builder.Build();
 
